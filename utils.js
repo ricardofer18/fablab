@@ -26,4 +26,53 @@ const sendForm = (data) => {
   addIngreso(userData)
 }
 
-export { setDisponible, setNoDisponible, sendForm }
+const setCantidad = (cantidad) => {
+  document.querySelector("#cantidad").innerHTML = cantidad
+
+  cantidad < 10 ? setDisponible() : setNoDisponible()
+}
+
+const setUserList = (users, cantidad) => {
+  if (cantidad === 0) {
+    document.querySelector("#usersList").innerHTML =
+      "No hay usuarios activos..."
+  } else {
+    const userList = Object.entries(users).map((e) => {
+      return {
+        id: e[0],
+        ...e[1],
+      }
+    })
+
+    document.querySelector("#usersList").innerHTML = ""
+
+    console.log(userList)
+
+    userList.forEach((user) => {
+      const liUser = document.createElement("p")
+      liUser.className = "liUser"
+
+      const btnDelete = document.createElement("button")
+      btnDelete.value = user.id
+      btnDelete.innerText = "Salida"
+      btnDelete.className = "btnDelete"
+
+      liUser.innerHTML = `
+        ${user.nombreCompleto}
+      `
+
+      document
+        .querySelector("#usersList")
+        .appendChild(liUser)
+        .appendChild(btnDelete)
+    })
+  }
+
+  document.querySelectorAll(".btnDelete").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      deleteUser(button.value)
+    })
+  })
+}
+
+export { setDisponible, setNoDisponible, sendForm, setCantidad, setUserList }

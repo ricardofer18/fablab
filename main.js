@@ -1,5 +1,5 @@
 import { getUsers, deleteUser } from "./services"
-import { setDisponible, setNoDisponible, sendForm } from "./utils"
+import { sendForm, setCantidad, setUserList } from "./utils"
 import "./style.css"
 
 const main = async () => {
@@ -55,54 +55,11 @@ const main = async () => {
 try {
   getUsers((users) => {
     let cantidad = users ? Object.keys(users).length : 0
-    document.querySelector("#cantidad").innerHTML = cantidad
 
-    //console.log(users)
+    setCantidad(cantidad)
 
-    cantidad < 10 ? setDisponible() : setNoDisponible()
-
-    if (cantidad === 0) {
-      document.querySelector("#usersList").innerHTML =
-        "No hay usuarios activos..."
-    } else {
-      const userList = Object.entries(users).map((e) => {
-        return {
-          id: e[0],
-          ...e[1],
-        }
-      })
-
-      document.querySelector("#usersList").innerHTML = ""
-
-      console.log(userList)
-
-      userList.forEach((user) => {
-        //document.querySelector("#usersList").innerHTML = ""
-
-        const liUser = document.createElement("p")
-        liUser.className = "liUser"
-
-        const btnDelete = document.createElement("button")
-        btnDelete.value = user.id
-        btnDelete.innerText = "Salida"
-        btnDelete.className = "btnDelete"
-
-        liUser.innerHTML = `
-          ${user.nombreCompleto}
-        `
-
-        document
-          .querySelector("#usersList")
-          .appendChild(liUser)
-          .appendChild(btnDelete)
-      })
-    }
-
-    document.querySelectorAll(".btnDelete").forEach((button) => {
-      button.addEventListener("click", (e) => {
-        deleteUser(button.value)
-      })
-    })
+    setUserList(users, cantidad)
+    
   })
 } catch (error) {
   console.error(error)
