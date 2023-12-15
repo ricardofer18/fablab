@@ -36,7 +36,6 @@ const main = async () => {
 
     document.querySelector("#btnSalida").addEventListener("click", (e) => {
       document.querySelector("#dialog").showModal()
-
       document.querySelector("#closeModal").addEventListener("click", (e) => {
         document.querySelector("#dialog").close()
       })
@@ -46,8 +45,8 @@ const main = async () => {
       e.preventDefault()
       const data = new FormData(e.target)
       sendForm(data)
-      document.querySelectorAll('input').forEach(input => {
-        input.value = ''
+      document.querySelectorAll("input").forEach((input) => {
+        input.value = ""
       })
     })
   } catch (error) {
@@ -58,11 +57,8 @@ const main = async () => {
 try {
   getUsers((users) => {
     let cantidad = users ? Object.keys(users).length : 0
-
     setCantidad(cantidad)
-
     setUserList(users, cantidad)
-    
   })
 } catch (error) {
   console.error(error)
