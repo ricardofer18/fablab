@@ -1,4 +1,4 @@
-import { addIngreso } from "./services"
+import { addIngreso, deleteUser } from "./services"
 
 const setNoDisponible = () => {
   document.querySelector("#disponibilidad").innerHTML = `
@@ -46,7 +46,7 @@ const setUserList = (users, cantidad) => {
 
     document.querySelector("#usersList").innerHTML = ""
 
-    console.log(userList)
+    //console.log(userList)
 
     userList.forEach((user) => {
       const liUser = document.createElement("p")

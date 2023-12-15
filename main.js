@@ -46,6 +46,9 @@ const main = async () => {
       e.preventDefault()
       const data = new FormData(e.target)
       sendForm(data)
+      document.querySelectorAll('input').forEach(input => {
+        input.value = ''
+      })
     })
   } catch (error) {
     console.error(error)
