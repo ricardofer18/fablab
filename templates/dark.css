@@ -2,3 +2,11 @@ html{
     background-color: #1e1e1e !important;
     color: white !important;
 }
+
+#css-mode{
+    background-color: #313131 !important;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5) !important;
+}
+#css-mode img{
+    filter: invert(0.8) !important;
+}

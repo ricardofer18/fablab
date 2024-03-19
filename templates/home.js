@@ -1,8 +1,8 @@
 const home = `
-    <style>
-        
-    </style>
     <div class="container">
+        <button id="css-mode" type="button">
+            <img src="https://img.icons8.com/?size=50&id=45474&format=png" />
+        </button>
         <div class="titles">
             <div class="logo">
                 <img src="./templates/inacap.png" />
