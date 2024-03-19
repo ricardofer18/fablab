@@ -1,3 +1,4 @@
+import { doc } from "firebase/firestore"
 import { addIngreso, deleteUser } from "./services"
 
 const setNoDisponible = () => {
@@ -32,9 +33,8 @@ const setCantidad = (cantidad) => {
   cantidad < 10 ? setDisponible() : setNoDisponible()
 }
 
-
-const setUserList = (users, rut) => {
-  if (rut){
+const rutSearch = (users) => {
+  if (users) {
     const userList = Object.entries(users).map((e) => {
       return {
         id: e[0],
@@ -42,49 +42,37 @@ const setUserList = (users, rut) => {
       }
     })
 
-    const usuario = userList.find(user => user.rut.toUpperCase() === rut);
-
-    if (usuario) {
-      document.querySelector("#usersList").innerHTML = ""
-
-      //console.log(userList)
-      const liUser = document.createElement("div")
-      liUser.className = "liUser"
-
-      const btnDelete = document.createElement("button")
-      btnDelete.value = usuario.id
-      console.log(usuario.id)
-      btnDelete.innerText = "Salida"
-      btnDelete.className = "btnDelete"
-
-      liUser.innerHTML = `
-          ${usuario.nombreCompleto}
-        `
-
-      document
-        .querySelector("#usersList")
-        .appendChild(liUser)
-        .appendChild(btnDelete)
-    }
+    document.querySelector("#dialogRut").addEventListener("input", (event) => {
+      let rut = event.target.value
+  
+      let user = userList.find((e) => e.rut === rut)
+  
+      printFoundUser(user)
+    })
   }
-
-  document.querySelectorAll(".btnDelete").forEach((button) => {
-    button.addEventListener("click", (e) => {
-      deleteUser(button.value)
-    })
-  })
 }
 
-const getDialogRut = (users) => {
-  document.querySelectorAll("#dialogRut").forEach(input => {
-    input.addEventListener("input", function () {
-      const rut = this.value
-      setUserList(users, rut);
-    })
-  })
+const clearList = () => {
+  document.querySelector("#usersList").innerHTML = ""
 }
 
-
+const printFoundUser = (user) => {
+  const foundUser = document.createElement("li")
+  const btnDelete = document.createElement("button")
+  foundUser.innerHTML = `${user.nombreCompleto}`
+  foundUser.className = "liUser"
+  btnDelete.value = user.id
+  btnDelete.innerText = "Salida"
+  btnDelete.className = "btnDelete"
+  btnDelete.type = "button"
+  btnDelete.addEventListener("click", () => {
+    deleteUser(btnDelete.value)
+    clearList()
+  })
+  foundUser.appendChild(btnDelete)
+  clearList()
+  document.querySelector("#usersList").appendChild(foundUser)
+}
 
 const toggleNightMode = () => {
   var cssMode = localStorage.getItem("cssMode")
@@ -125,13 +113,11 @@ const toggleNightMode = () => {
   })
 }
 
-
 export {
   setDisponible,
   setNoDisponible,
   sendForm,
   setCantidad,
-  setUserList,
   toggleNightMode,
-  getDialogRut
+  rutSearch,
 }

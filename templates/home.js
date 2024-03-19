@@ -26,13 +26,13 @@ const home = `
             <dialog id="dialog">
                 <div class="container">
                     <h1>Marcar Salida</h1>
-                    <input type="text" id="dialogRut" name="dialogRut" placeholder="Ingresar RUT" onchange="" />
+                        <input type="text" id="dialogRut" name="dialogRut" placeholder="Ingresar RUT"/>
                     <div id="usersList"></div>
-                    <button id="closeModal" class="button">Volver</button>
+                    <button id="closeModal" class="button" type="button">Volver</button>
                 </div>
             </dialog>
         </form>
         <button id="btnSalida" class="button">Marcar salida</button>
     </div>
     `
-export { home };
+export { home }
