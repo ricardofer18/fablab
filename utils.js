@@ -49,7 +49,7 @@ const setUserList = (users, cantidad) => {
     //console.log(userList)
 
     userList.forEach((user) => {
-      const liUser = document.createElement("p")
+      const liUser = document.createElement("div")
       liUser.className = "liUser"
 
       const btnDelete = document.createElement("button")

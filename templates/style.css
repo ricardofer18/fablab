@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background-color: #dfdfdf;
+    color: #1e1e1e;
+    text-align: center;
+    font-family: "Hind Siliguri", sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding-top: 20px;
+    }
+
+    .logo {
+        width: 150px;
+        margin: auto;
+        margin-bottom: 40px;
+    }
+
+    .logo img {
+        width: 42px;
+        float: left;
+    }
+
+    .logo h1 {
+        text-align: left;
+        text-indent: 10px;
+    }
+
+    .titles {
+        width: 70%;
+        margin: auto;
+    }
+
+    .titles h1 {
+        font-size: 30px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    #disponibilidad {
+        font-size: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .green {
+        color: rgb(107, 196, 107);
+    }
+
+    .red {
+        color: rgb(255, 71, 71);
+    }
+
+    .titles h3 {
+        font-size: 20px;
+        margin-top: 30px;
+    }
+
+    #ingresoForm {
+        width: 70%;
+        margin: auto;
+        margin-top: 40px;
+    }
+
+    #ingresoForm input {
+        width: 100%;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        font-size: 15px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    #tipoActividad {
+        width: 100%;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        font-size: 15px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    #tipoActividad option {
+        margin: auto;
+        width: 70%;
+    }
+
+    button[type=submit] {
+        width: 100%;
+        margin-top: 40px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        font-size: 15px;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        background-color: rgb(107, 196, 107);
+    }
+
+    #btnSalida {
+        width: 70%;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        font-size: 15px;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        background-color: rgb(255, 71, 71);
+    }
+
+    #dialog {
+        margin: auto;
+        border: none;
+        width: 80%;
+        padding-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 500px rgba(0, 0, 0, 1);
+    }
+
+    #dialog h1 {
+        margin-bottom: 10px;
+    }
+
+    #usersList {
+        border: 1px solid #b7b7b7;
+        border-radius: 5px;
+        box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.3);
+        width: 80%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    .liUser {
+        padding: 5px 10px 5px 10px;
+        margin: auto;
+        border: none;
+        border-bottom: 1px solid #aeaeae;
+        text-align: left;
+    }
+
+    .btnDelete {
+        float: right;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        background-color: rgb(255, 71, 71);
+    }
+
+    #closeModal {
+        width: 70%;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        font-size: 15px;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        background-color: rgb(255, 71, 71);
+    }
+}
