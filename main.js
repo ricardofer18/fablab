@@ -1,5 +1,5 @@
 import { getUsers, deleteUser } from "./services"
-import { sendForm, setCantidad, setUserList, toggleNightMode } from "./utils"
+import { sendForm, setCantidad, setUserList, toggleNightMode, getDialogRut } from "./utils"
 import "./templates/style.css"
 
 import { home } from "./templates/home"
@@ -39,7 +39,8 @@ try {
   getUsers((users) => {
     let cantidad = users ? Object.keys(users).length : 0
     setCantidad(cantidad)
-    setUserList(users, cantidad)
+    setUserList(users)
+    getDialogRut(users)
   })
 } catch (error) {
   console.error(error)

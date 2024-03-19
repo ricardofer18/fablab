@@ -10,3 +10,8 @@ html{
 #css-mode img{
     filter: invert(0.8) !important;
 }
+
+#dialog{
+    background-color: #313131;
+    color: white;
+}
