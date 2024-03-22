@@ -45,10 +45,10 @@ const setCantidad = (cantidad) => {
 }
 
 const disponibilidad = (users) => {
-  if(userList(users).find((user) => user.actividad === "Reunión")) {
+  if (userList(users).find((user) => user.actividad === "Reunión")) {
     setNoDisponible()
-    console.log('no disponible')
-  }else {
+    console.log("no disponible")
+  } else {
     setDisponible()
   }
 }
@@ -133,5 +133,5 @@ export {
   setCantidad,
   toggleNightMode,
   rutSearch,
-  disponibilidad
+  disponibilidad,
 }

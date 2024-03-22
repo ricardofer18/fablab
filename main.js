@@ -1,5 +1,11 @@
 import { getUsers, deleteUser } from "./services"
-import { sendForm, setCantidad, toggleNightMode, rutSearch, disponibilidad } from "./utils"
+import {
+  sendForm,
+  setCantidad,
+  toggleNightMode,
+  rutSearch,
+  disponibilidad,
+} from "./utils"
 import "./templates/style.css"
 
 import { home } from "./templates/home"
