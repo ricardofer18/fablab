@@ -1,6 +1,19 @@
 import { doc } from "firebase/firestore"
 import { addIngreso, deleteUser } from "./services"
 
+const userList = (users) => {
+  if (users) {
+    return Object.entries(users).map((e) => {
+      return {
+        id: e[0],
+        ...e[1],
+      }
+    })
+  }
+
+  return []
+}
+
 const setNoDisponible = () => {
   document.querySelector("#disponibilidad").innerHTML = `
     <span class="red">
@@ -29,24 +42,24 @@ const sendForm = (data) => {
 
 const setCantidad = (cantidad) => {
   document.querySelector("#cantidad").innerHTML = cantidad
+}
 
-  cantidad < 10 ? setDisponible() : setNoDisponible()
+const disponibilidad = (users) => {
+  if(userList(users).find((user) => user.actividad === "Reunión")) {
+    setNoDisponible()
+    console.log('no disponible')
+  }else {
+    setDisponible()
+  }
 }
 
 const rutSearch = (users) => {
   if (users) {
-    const userList = Object.entries(users).map((e) => {
-      return {
-        id: e[0],
-        ...e[1],
-      }
-    })
-
     document.querySelector("#dialogRut").addEventListener("input", (event) => {
       let rut = event.target.value
-  
-      let user = userList.find((e) => e.rut === rut)
-  
+
+      let user = userList(users).find((e) => e.rut === rut)
+
       printFoundUser(user)
     })
   }
@@ -120,4 +133,5 @@ export {
   setCantidad,
   toggleNightMode,
   rutSearch,
+  disponibilidad
 }
