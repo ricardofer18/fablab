@@ -21,6 +21,9 @@ html {
     #btnSalida {
         width: 30% !important;
     }
+    #btnbtnActiveUsers {
+        width: 30% !important;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -29,6 +32,10 @@ html {
     }
 
     #btnSalida {
+        width: 70% !important;
+    }
+
+    #btnActiveUsers {
         width: 70% !important;
     }
 }
@@ -155,7 +162,7 @@ button[type=submit] {
 }
 
 #btnSalida {
-    width: 70%;
+    width: 30%;
     margin-top: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -166,6 +173,20 @@ button[type=submit] {
     color: white;
     font-weight: bold;
     background-color: rgb(255, 71, 71);
+}
+
+#btnActiveUsers{
+    width: 30%;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(255, 184, 71);
 }
 
 #dialog {

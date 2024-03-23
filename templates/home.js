@@ -22,17 +22,23 @@ const home = `
                 <option value="Charla">Charla</option>
                 <option value="Taller">Taller</option>
             </select>
-            <button type="submit" class="button">Enviar</button>
+            <button type="submit">Enviar</button>
             <dialog id="dialog">
                 <div class="container">
                     <h1>Marcar Salida</h1>
                         <input type="text" id="dialogRut" name="dialogRut" placeholder="Ingresar RUT"/>
                     <div id="usersList"></div>
-                    <button id="closeModal" class="button" type="button">Volver</button>
+                    <button id="closeModal" type="button">Volver</button>
                 </div>
             </dialog>
+            <dialog id="activeUsersDialog">
+                <h1>Usuarios Activos</h1>
+                <div id="activeUsersList"></div>
+                <button id="closeActiveUsers">Volver</button>
+            </dialog>
         </form>
-        <button id="btnSalida" class="button">Marcar salida</button>
+        <button id="btnSalida">Marcar salida</button><br>
+        <button id="btnActiveUsers">Usuarios Activos</button>
     </div>
     `
 export { home }
