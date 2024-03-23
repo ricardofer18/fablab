@@ -1,5 +1,6 @@
 import { doc } from "firebase/firestore"
 import { addIngreso, deleteUser } from "./services"
+import { formatRut } from 'chilean-rutify';
 
 const userList = (users) => {
   if (users) {
@@ -32,7 +33,7 @@ const setDisponible = () => {
 
 const sendForm = (data) => {
   const userData = {
-    rut: data.get("rut"),
+    rut: formatRut(data.get("rut")),
     nombreCompleto: data.get("nombreCompleto"),
     actividad: data.get("tipoActividad"),
   }
@@ -67,6 +68,27 @@ const rutSearch = (users) => {
 
 const clearList = () => {
   document.querySelector("#usersList").innerHTML = ""
+}
+
+const setActiveUserList = (users) => {
+  const dialog = document.querySelector("#activeUsersList")
+  dialog.innerHTML = ""
+  
+  const table = document.createElement("table")
+  table.id = "activeUsersTable"
+
+  table.appendChild(document.createElement("tbody").appendChild(document.createElement("th")).appendChild(document.createTextNode("Nombre")).parentNode)
+  table.appendChild(document.createElement("tbody").appendChild(document.createElement("th")).appendChild(document.createTextNode("Actividad")).parentNode)
+
+  dialog.appendChild(table)
+
+  userList(users).forEach((user, index) => {
+    const row = table.insertRow(index)
+    const cell = row.insertCell(0)
+    cell.innerText = user.nombreCompleto
+    const cell1 = row.insertCell(1)
+    cell1.innerText = user.actividad
+  })
 }
 
 const printFoundUser = (user) => {
@@ -130,4 +152,5 @@ export {
   toggleNightMode,
   rutSearch,
   disponibilidad,
+  setActiveUserList,
 }

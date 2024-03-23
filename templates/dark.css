@@ -11,7 +11,7 @@ html{
     filter: invert(0.8) !important;
 }
 
-#dialog{
+dialog{
     background-color: #313131;
     color: white;
 }

@@ -5,11 +5,14 @@ import {
   toggleNightMode,
   rutSearch,
   disponibilidad,
+  setActiveUserList,
 } from "./utils"
+import { validarRut } from "./validations"
 import "./templates/style.css"
 
 import { home } from "./templates/home"
 import { doc } from "firebase/firestore"
+import { validRut } from "chilean-rutify"
 
 const main = async () => {
   try {
@@ -18,6 +21,15 @@ const main = async () => {
     }
 
     await renderApp()
+
+    document.querySelector("#btnActiveUsers").addEventListener("click", (e) => {
+      document.querySelector("#activeUsersDialog").showModal()
+      document
+        .querySelector("#closeActiveUsers")
+        .addEventListener("click", (e) => {
+          document.querySelector("#activeUsersDialog").close()
+        })
+    })
 
     document.querySelector("#btnSalida").addEventListener("click", (e) => {
       document.querySelector("#dialog").showModal()
@@ -28,12 +40,18 @@ const main = async () => {
 
     document.querySelector("#ingresoForm").addEventListener("submit", (e) => {
       e.preventDefault()
-      const data = new FormData(e.target)
-      sendForm(data)
-      document.querySelectorAll("input").forEach((input) => {
-        input.value = ""
-      })
     })
+
+    if (validarRut()) {
+      document.querySelector("#ingresoForm").addEventListener("submit", (e) => {
+        // e.preventDefault()
+        const data = new FormData(e.target)
+        sendForm(data)
+        document.querySelectorAll("input").forEach((input) => {
+          input.value = ""
+        })
+      })
+    }
 
     toggleNightMode()
   } catch (error) {
@@ -47,6 +65,7 @@ try {
     setCantidad(cantidad)
     rutSearch(users)
     disponibilidad(users)
+    setActiveUserList(users)
   })
 } catch (error) {
   console.error(error)

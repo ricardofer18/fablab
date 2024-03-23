@@ -13,8 +13,8 @@ const home = `
             <h3>Usuarios actuales: <span id="cantidad"></span></h3>
         </div>
         <form id="ingresoForm">
-            <input type="text" name="rut" placeholder="Ingrese RUT" /><br>
-            <input type="text" name="nombreCompleto" placeholder="Ingrese Nombre Completo" /><br>
+            <input type="text" name="rut" id="rutInput" placeholder="Ingrese RUT" /><br>
+            <input type="text" name="nombreCompleto" id="nameInput" placeholder="Ingrese Nombre Completo" required /><br>
             <select name="tipoActividad" id="tipoActividad">
                 <option value="Proyecto">Proyecto</option>
                 <option value="Actividad">Actividad</option>
@@ -22,7 +22,7 @@ const home = `
                 <option value="Charla">Charla</option>
                 <option value="Taller">Taller</option>
             </select>
-            <button type="submit">Enviar</button>
+            <button type="submit" id="submit">Enviar</button>
             <dialog id="dialog">
                 <div class="container">
                     <h1>Marcar Salida</h1>
@@ -34,7 +34,7 @@ const home = `
             <dialog id="activeUsersDialog">
                 <h1>Usuarios Activos</h1>
                 <div id="activeUsersList"></div>
-                <button id="closeActiveUsers">Volver</button>
+                <button id="closeActiveUsers" type="button">Volver</button>
             </dialog>
         </form>
         <button id="btnSalida">Marcar salida</button><br>

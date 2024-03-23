@@ -25,7 +25,6 @@ function validarRut(rut) {
     return dv === dvEsperado;
 }
 
-
 function validarEnTiempoReal() {
     var rutInput = document.getElementById('rut');
     var rut = rutInput.value.trim();
@@ -38,3 +37,5 @@ function validarEnTiempoReal() {
         rutInput.classList.add('invalid');
     }
 }
+
+    // <input type="text" id="rut" name="rut" placeholder="12345678-9" pattern="[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9Kk]{1}" required oninput="validarEnTiempoReal()">
