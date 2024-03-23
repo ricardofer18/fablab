@@ -87,38 +87,34 @@ const printFoundUser = (user) => {
   document.querySelector("#usersList").appendChild(foundUser)
 }
 
+const loadCssMode = () => {
+  return localStorage.getItem("cssMode")
+}
+
+const importNightMode = () => {
+  const link = document.createElement("link")
+  link.rel = "stylesheet"
+  link.type = "text/css"
+  link.href = "/templates/dark.css"
+  link.id = "night"
+  document.head.appendChild(link)
+  localStorage.setItem("cssMode", "night")
+  document.querySelector("#css-mode").querySelector("img").src = "https://img.icons8.com/?size=50&id=648&format=png"
+}
+
+
 const toggleNightMode = () => {
-  var cssMode = localStorage.getItem("cssMode")
-  if (cssMode == "night") {
-    const link = document.createElement("link")
-    link.rel = "stylesheet"
-    link.type = "text/css"
-    link.href = "/templates/dark.css"
-    link.id = "night"
-    document.head.appendChild(link)
-    localStorage.setItem("cssMode", "night")
-    document.querySelector("#css-mode").querySelector("img").src =
-      "https://img.icons8.com/?size=50&id=648&format=png"
+  if (loadCssMode() === "night") {
+    importNightMode()
   }
 
   document.querySelector("#css-mode").addEventListener("click", (e) => {
-    var cssMode = localStorage.getItem("cssMode")
-    console.log(cssMode)
-    if (cssMode !== "night") {
-      const link = document.createElement("link")
-      link.rel = "stylesheet"
-      link.type = "text/css"
-      link.href = "/templates/dark.css"
-      link.id = "night"
-      document.head.appendChild(link)
-      localStorage.setItem("cssMode", "night")
-      document.querySelector("#css-mode").querySelector("img").src =
-        "https://img.icons8.com/?size=50&id=648&format=png"
+    if (loadCssMode() !== "night") {
+      // Function to set cssMode to night and more...
+      importNightMode()
     } else {
-      var link = document.getElementById("night")
-      if (link) {
-        link.parentNode.removeChild(link)
-      }
+      const night = document.querySelector("#night")
+      night.remove()
       localStorage.setItem("cssMode", "day")
       document.querySelector("#css-mode").querySelector("img").src =
         "https://img.icons8.com/?size=50&id=45474&format=png"
