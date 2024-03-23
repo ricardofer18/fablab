@@ -7,7 +7,7 @@ import {
   disponibilidad,
   setActiveUserList,
 } from "./utils"
-import { validarRut } from "./validations"
+import { useForm } from "./validations"
 import "./templates/style.css"
 
 import { home } from "./templates/home"
@@ -42,16 +42,7 @@ const main = async () => {
       e.preventDefault()
     })
 
-    if (validarRut()) {
-      document.querySelector("#ingresoForm").addEventListener("submit", (e) => {
-        // e.preventDefault()
-        const data = new FormData(e.target)
-        sendForm(data)
-        document.querySelectorAll("input").forEach((input) => {
-          input.value = ""
-        })
-      })
-    }
+    useForm()
 
     toggleNightMode()
   } catch (error) {
